@@ -1,4 +1,4 @@
-package edu.westga.cs1302.project1jessicastuckey;
+package edu.westga.cs1302.project1jessicastuckey.main;
 
 import java.io.IOException;
 

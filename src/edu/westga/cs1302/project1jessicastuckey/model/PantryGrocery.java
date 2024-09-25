@@ -66,6 +66,15 @@ public class PantryGrocery {
 	}
 	
 	/**
+	 * Returns the initial amount of the grocery item as the quantity
+	 * 
+	 * @param amount the amount of a grocery item
+	 */
+	public void setQuantity(int amount) {
+		this.quantity = amount;
+	}
+
+	/**
 	 * Return a String of the grocery's name and quantity
 	 * 
 	 * @return the String of grocery's name and quantity
@@ -73,5 +82,28 @@ public class PantryGrocery {
 
 	public String toString() {
 		return this.name + " - " + this.quantity;
+	}
+	
+	/**
+	 * Increases the quantity by the amount given
+	 * 
+	 * @param amount the amount of a grocery item
+	 */
+	public void increaseQuantity(int amount) {
+		this.quantity = this.quantity + amount;
+	}
+
+	/**
+	 * Decreases the quantity by the given amount
+	 * 
+	 * @param amount the amount of a grocery item
+	 * @throws IllegalArgumentException if quantity becomes negative after decreasing the amount
+	 */
+
+	public void decreaseQuantity(int amount) {
+		this.quantity = this.quantity - amount;
+		if (this.quantity < 0) {
+			throw new IllegalArgumentException("quantity cannot be negative");
+		}
 	}
 }

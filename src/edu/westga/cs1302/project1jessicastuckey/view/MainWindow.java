@@ -1,10 +1,12 @@
 package edu.westga.cs1302.project1jessicastuckey.view;
 
+import edu.westga.cs1302.project1jessicastuckey.model.Pantry;
 import edu.westga.cs1302.project1jessicastuckey.model.PantryGrocery;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -21,7 +23,23 @@ public class MainWindow {
 	@FXML
 	private ComboBox<String> type;
 	@FXML
-	private ListView<PantryGrocery> pantry;
+	private ListView<PantryGrocery> pantryListView;
+	@FXML
+	private TextField quantity;
+
+	private Pantry pantry;
+	
+	/**
+	 * Initializes elements for the GUI
+	 * 
+	 * 
+	 */
+	public void initialize() {
+		ObservableList<String> list = FXCollections.observableArrayList("Vegetable", "Meat", "Bread", "Fruit",
+				"Dessert", "Ingredient");
+		this.type.setItems(list);
+		this.pantry = new Pantry();
+	}
 
 	@FXML
 	void addGrocery(ActionEvent event) {
@@ -29,19 +47,39 @@ public class MainWindow {
 		String type = this.type.getSelectionModel().getSelectedItem();
 
 		PantryGrocery grocery = new PantryGrocery(name, type);
-		this.pantry.getItems().add(grocery);
+		try {
+			int quantity = Integer.parseInt(this.quantity.getText());
+			grocery.setQuantity(quantity);
+
+		} catch (NumberFormatException errorThing) {
+			Alert errorPopup = new Alert(Alert.AlertType.ERROR);
+			errorPopup.setContentText("Unable to create grocery: " + errorThing.getMessage()
+					+ ". Please reenter quantity and try again.");
+			errorPopup.showAndWait();
+		}
+
+		if (this.pantry.getSize() < 5) { 
+		this.pantryListView.getItems().add(grocery);
+		this.pantry.addGrocery(grocery);
+		} else {
+			Alert errorPopup = new Alert(Alert.AlertType.ERROR);
+			errorPopup.setContentText("Pantry is full.");
+			errorPopup.showAndWait();
+		}
+	}
+	
+	@FXML
+	void decreaseQuantity(ActionEvent event) {
+		PantryGrocery grocery = this.pantryListView.getSelectionModel().getSelectedItem();
+		grocery.decreaseQuantity(1);
+		this.pantryListView.refresh();
+
 	}
 
-	/**
-	 * Initializes the combobox and Strings in the combobox
-	 * 
-	 * @author JS
-	 * @version Fall 2024
-	 */
-
-	public void initialize() {
-		ObservableList<String> list = FXCollections.observableArrayList("Vegetable", "Meat", "Bread", "Fruit",
-				"Dessert", "Ingredient");
-		this.type.setItems(list);
+	@FXML
+	void increaseQuantity(ActionEvent event) {
+		PantryGrocery grocery = this.pantryListView.getSelectionModel().getSelectedItem();
+		grocery.increaseQuantity(1);
+		this.pantryListView.refresh();
 	}
 }

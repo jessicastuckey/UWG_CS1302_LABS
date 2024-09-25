@@ -1,4 +1,4 @@
-package edu.westga.cs1302.project1jessicastuckey.test.model;
+package edu.westga.cs1302.project1jessicastuckey.test.model.PantryGrocery;
 
 import static org.junit.jupiter.api.Assertions.*;
 
