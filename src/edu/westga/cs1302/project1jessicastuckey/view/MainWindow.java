@@ -69,6 +69,19 @@ public class MainWindow {
 	}
 	
 	@FXML
+	void removeGrocery(ActionEvent event) {
+		PantryGrocery grocery = this.pantryListView.getSelectionModel().getSelectedItem();
+		if (grocery != null) {
+			this.pantryListView.getItems().remove(grocery);
+			this.pantry.removeGrocery(grocery);
+		} else {
+			Alert errorPopup = new Alert(Alert.AlertType.ERROR);
+			errorPopup.setContentText("No grocery selected. Unable to remove.");
+			errorPopup.showAndWait();
+		}
+	}
+	
+	@FXML
 	void decreaseQuantity(ActionEvent event) {
 		PantryGrocery grocery = this.pantryListView.getSelectionModel().getSelectedItem();
 		grocery.decreaseQuantity(1);

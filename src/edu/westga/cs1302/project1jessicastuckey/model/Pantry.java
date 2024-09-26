@@ -43,6 +43,29 @@ public class Pantry {
 		this.size++;
 	}
 	
+	/**
+	 * Removes a grocery item from the array
+	 * 
+	 * @param grocery the grocery to be removed
+	 * @throws IllegalArgumentException if grocery is null
+	 * @throws IllegalArgumentException if pantry is empty, no items to remove
+	 */
+
+	public void removeGrocery(PantryGrocery grocery) {
+		if (grocery == null) {
+			throw new IllegalArgumentException("grocery must not be null.");
+		}
+		if (this.size == 0) {
+			throw new IllegalArgumentException("pantry list is empty");
+		}
+		for (int index = 0; index < this.groceries.length; index++) {
+			if (this.groceries[index] == grocery) {
+				this.groceries[index] = null;
+			}
+		}
+		this.size--;
+	}
+
 	/** Return the number of groceries in the pantry
 	 * 
 	 * @return the number of groceries in the pantry
