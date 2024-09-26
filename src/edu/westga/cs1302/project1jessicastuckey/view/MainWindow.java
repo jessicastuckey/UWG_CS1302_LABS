@@ -95,4 +95,11 @@ public class MainWindow {
 		grocery.increaseQuantity(1);
 		this.pantryListView.refresh();
 	}
+	
+	@FXML
+	void countGroceries(ActionEvent event) {
+		Alert infoPopup = new Alert(Alert.AlertType.INFORMATION);
+		infoPopup.setContentText("The grocery count is: " + utils.Utility.countGroceries(this.pantry));
+		infoPopup.showAndWait();
+	}
 }
