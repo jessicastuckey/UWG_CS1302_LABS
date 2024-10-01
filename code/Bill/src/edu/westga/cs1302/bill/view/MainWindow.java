@@ -1,10 +1,8 @@
 package edu.westga.cs1302.bill.view;
 
-import java.io.File;
-
-import edu.westga.cs1302.bill.datatier.BillFileWriter;
 import edu.westga.cs1302.bill.model.Bill;
 import edu.westga.cs1302.bill.model.BillItem;
+import edu.westga.cs1302.bill.model.BillPersistenceManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -12,8 +10,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
-import javafx.stage.Window;
 
 /**
  * The codebehind for the MainWindow of the application
@@ -71,18 +67,7 @@ public class MainWindow {
 
 	@FXML
 	void saveBillData(ActionEvent event) {
-		//Gets string for receipt
-		String receiptData = this.receiptArea.getText();
-		
-		//This opens the file directory using Javafx
-		Window owner = this.pane.getScene().getWindow();
-		FileChooser fileChooser = new FileChooser();
-
-		File selectedFile = fileChooser.showSaveDialog(owner);
-		if (selectedFile != null) {
-			BillFileWriter writer = new BillFileWriter(selectedFile);
-			writer.writeFile(receiptData);
-		}
+		BillPersistenceManager.saveBillData(this.bill);
 	}
 
 	@FXML
