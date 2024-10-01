@@ -1,7 +1,6 @@
 package edu.westga.cs1302.bill.view;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 
 import edu.westga.cs1302.bill.datatier.BillFileWriter;
 import edu.westga.cs1302.bill.model.Bill;
