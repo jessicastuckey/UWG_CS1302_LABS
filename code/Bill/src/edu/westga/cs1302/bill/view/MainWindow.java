@@ -2,10 +2,13 @@ package edu.westga.cs1302.bill.view;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Comparator;
 
 import edu.westga.cs1302.bill.model.Bill;
 import edu.westga.cs1302.bill.model.BillItem;
 import edu.westga.cs1302.bill.model.BillPersistenceManager;
+import edu.westga.cs1302.cms.model.Student;
+import edu.westga.cs1302.cms.model.StudentDataPersistenceManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -33,6 +36,11 @@ public class MainWindow {
 	private TextArea receiptArea;
 	@FXML
 	private ComboBox<String> serverName;
+    @FXML 
+    private ComboBox<BillPersistenceManager> format;
+    @FXML 
+    private ComboBox<Comparator<Bill>> order;
+
 
 	@FXML
 	void addItem(ActionEvent event) {
