@@ -20,7 +20,7 @@
       <ComboBox fx:id="serverName" layoutX="275.0" layoutY="60.0" onAction="#selectServer" prefHeight="25.0" prefWidth="88.0" />
       <Label layoutX="298.0" layoutY="36.0" text="Server" />
       <Line endX="28.0" endY="-152.0" layoutX="206.0" layoutY="168.0" startX="28.0" startY="-46.0" />
-      <ComboBox fx:id="order" layoutX="143.0" layoutY="96.0" prefHeight="35.0" prefWidth="81.0" promptText="..." />
+      <ComboBox fx:id="order" layoutX="143.0" layoutY="96.0" onAction="#changeOrder" prefHeight="35.0" prefWidth="81.0" promptText="..." />
       <ComboBox fx:id="format" layoutX="216.0" layoutY="320.0" prefHeight="35.0" prefWidth="88.0" />
    </children>
 </AnchorPane>
