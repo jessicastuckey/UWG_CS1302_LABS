@@ -24,7 +24,7 @@ public abstract class BillPersistenceManager {
 	 * @param bill the bill to save
 	 * @throws IOException
 	 */
-	public abstract void saveBillData(Bill bill);
+	public abstract void saveBillData(Bill bill) throws IOException;
 
 	/**
 	 * Load the bill!

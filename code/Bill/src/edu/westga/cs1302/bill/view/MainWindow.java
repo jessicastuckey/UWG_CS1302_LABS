@@ -3,12 +3,12 @@ package edu.westga.cs1302.bill.view;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Comparator;
-
 import edu.westga.cs1302.bill.model.Bill;
 import edu.westga.cs1302.bill.model.BillItem;
 import edu.westga.cs1302.bill.model.BillPersistenceManager;
-import edu.westga.cs1302.cms.model.Student;
-import edu.westga.cs1302.cms.model.StudentDataPersistenceManager;
+import edu.westga.cs1302.bill.model.CSVBillPersistenceManager;
+import edu.westga.cs1302.bill.model.TSVBillPersistenceManager;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -40,7 +40,6 @@ public class MainWindow {
     private ComboBox<BillPersistenceManager> format;
     @FXML 
     private ComboBox<Comparator<Bill>> order;
-
 
 	@FXML
 	void addItem(ActionEvent event) {
@@ -78,7 +77,13 @@ public class MainWindow {
 
 	@FXML
 	void saveBillData(ActionEvent event) {
-		BillPersistenceManager.saveBillData(this.bill);
+		try {
+			this.format.getValue().saveBillData(this.bill);
+		} catch (IOException writeError) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setContentText("Unable to save data to file!");
+			alert.showAndWait();
+		}
 	}
 
 	@FXML
@@ -86,8 +91,13 @@ public class MainWindow {
 		this.serverName.getItems().add("Bob");
 		this.serverName.getItems().add("Alice");
 		this.serverName.getItems().add("Trudy");
+		
+		this.format.getItems().add(new CSVBillPersistenceManager());
+		this.format.getItems().add(new TSVBillPersistenceManager());
+		this.format.setValue(this.format.getItems().get(0));
+
 		try {
-			this.bill = BillPersistenceManager.loadBillData();
+			this.bill = this.format.getValue().loadBillData();
 		} catch (FileNotFoundException fileError) {
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
 			alert.setContentText("No save data file found, loading with no bill data");
