@@ -20,7 +20,7 @@
       <Line endX="-176.0" endY="428.0" layoutX="417.0" layoutY="202.0" startX="-176.0" startY="-191.0" />
       <Label layoutX="92.0" layoutY="83.0" text="Ingredients" />
       <Line endX="-412.0" endY="-133.0" layoutX="427.0" layoutY="212.0" startX="-200.0" startY="-133.0" />
-      <ComboBox fx:id="sort" layoutX="266.0" layoutY="43.0" prefWidth="150.0" />
+      <ComboBox fx:id="sortComboBox" layoutX="266.0" layoutY="43.0" onAction="#changeSort" prefWidth="150.0" />
       <Label layoutX="322.0" layoutY="20.0" text="Sort By" />
    </children>
 </AnchorPane>
