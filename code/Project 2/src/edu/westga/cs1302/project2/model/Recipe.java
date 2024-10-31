@@ -13,8 +13,10 @@ public class Recipe {
 
 	/**
 	 * Create a new empty recipe
+	 * 
+	 * @param name the name of the Recipe
 	 */
-	public Recipe() {
+	public Recipe(String name) {
 		this.name = name;
 		this.ingredientsList = new ArrayList<Ingredient>();
 	}

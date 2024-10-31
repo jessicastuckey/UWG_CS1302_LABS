@@ -26,11 +26,10 @@ public class RecipeTextifier {
 		if (recipe == null) {
 			throw new IllegalArgumentException("Must provide a valid Recipe");
 		}
-		String text = "RECIPE NAME " + recipe.getName() + System.lineSeparator();
-		text += "INGREDIENTS" + System.lineSeparator();
+		String text = recipe.getName() + System.lineSeparator();
 		for (Ingredient ingredient : recipe.getIngredients()) {
 			if (ingredient != null) {
-				text += ingredient.getName() + " - " + ingredient.getType() + System.lineSeparator();
+				text += ingredient.getName() + ", " + ingredient.getType() + ", ";
 			}
 		}
 	return text;

@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -18,7 +19,8 @@ import javafx.scene.control.TextField;
  */
 public class MainWindow {
 
-    @FXML private CheckBox mustIncludeDigits;
+    @FXML private Label errorText;
+	@FXML private CheckBox mustIncludeDigits;
     @FXML private CheckBox mustIncludeLowerCaseLetters;
     @FXML private CheckBox mustIncludeUpperCaseLetters;
     @FXML private TextField minimumLength;
@@ -68,5 +70,7 @@ public class MainWindow {
         this.minimumLength.setText("1");
         Random randomNumberGenerator = new Random();
         this.generator = new PasswordGenerator(randomNumberGenerator.nextLong());
+        this.errorText.textProperty().bind(null);
+        
     }
 }
