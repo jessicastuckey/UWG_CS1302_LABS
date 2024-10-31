@@ -1,22 +1,17 @@
 package edu.westga.cs1302.project2.view;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 
 import edu.westga.cs1302.project2.model.IngredientNameComparator;
 import edu.westga.cs1302.project2.model.IngredientTypeComparator;
 import edu.westga.cs1302.project2.model.Ingredient;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 
 /**
  * Codebehind for the Main Window of the application.
@@ -42,6 +37,7 @@ public class MainWindow {
 			alert.setContentText(error.getMessage());
 			alert.showAndWait();
 		}
+		this.ingredientsList.refresh();
 	}
 
 	@FXML
@@ -50,6 +46,7 @@ public class MainWindow {
 		if (selectedIngredient != null) {
 			this.ingredientsList.getItems().remove(selectedIngredient);
 		}
+		this.ingredientsList.refresh();
 	}
 	
 	  @FXML
