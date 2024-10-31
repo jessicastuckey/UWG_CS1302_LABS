@@ -28,12 +28,12 @@ public class CSVRecipePersistenceManager {
 	 * @param recipe the recipe to save
 	 * @throws IOException
 	 */
-	public void saveRecipeData(Recipe recipe) throws IOException {
+	public static void saveRecipeData(Recipe recipe) throws IOException {
 		if (recipe == null) {
 			throw new IllegalArgumentException("recipe cannot be null");
 		}
-		ArrayList<Recipe> recipeList = this.loadRecipeData();
-		if (this.isDuplicateRecipe(recipeList, recipe)) {
+		ArrayList<Recipe> recipeList = loadRecipeData();
+		if (isDuplicateRecipe(recipeList, recipe)) {
 			throw new IllegalStateException();
 		}
 		try (PrintWriter writer = new PrintWriter(DATA_FILE)) {
@@ -43,7 +43,7 @@ public class CSVRecipePersistenceManager {
 		}
 	}
 
-	private boolean isDuplicateRecipe(ArrayList<Recipe> recipeList, Recipe recipe) {
+	private static boolean isDuplicateRecipe(ArrayList<Recipe> recipeList, Recipe recipe) {
 		for (Recipe currentRecipe : recipeList) {
 			if (currentRecipe.getName().equals(recipe.getName())) {
 				return true;
@@ -60,7 +60,7 @@ public class CSVRecipePersistenceManager {
 	 * 
 	 * @return the recipe loaded
 	 */
-	public ArrayList<Recipe> loadRecipeData() throws FileNotFoundException, IOException {
+	public static ArrayList<Recipe> loadRecipeData() throws FileNotFoundException, IOException {
 		ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
 		File inputFile = new File(DATA_FILE);
 		try (Scanner reader = new Scanner(inputFile)) {
@@ -77,6 +77,8 @@ public class CSVRecipePersistenceManager {
 			} catch (IllegalArgumentException recipeDataError) {
 				throw new IOException("Unable to create recipe, bad name/type on line ");
 			}
+		} catch (FileNotFoundException fnfe) {
+			return new ArrayList<Recipe>();
 		}
 		return recipeList;
 	}
