@@ -14,8 +14,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 /**
@@ -31,6 +33,8 @@ public class MainWindow {
     @FXML private ComboBox<Comparator<Ingredient>> sortComboBox;
     @FXML private ListView<Ingredient> recipeList;
     @FXML private TextField recipeName;
+    @FXML private TextArea recipeDisplay;
+    @FXML private Button recipeDisplayButton;
 
 	@FXML
 	void addIngredient(ActionEvent event) {
@@ -114,6 +118,11 @@ public class MainWindow {
 			  this.ingredientsList.refresh();
 		  }
 	  }
+	  
+	  @FXML
+	    void searchRecipes(ActionEvent event) {
+
+	    }
 	  
 	@FXML
 	void initialize() {
