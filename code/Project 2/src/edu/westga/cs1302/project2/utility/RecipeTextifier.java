@@ -1,4 +1,6 @@
-package utility;
+package edu.westga.cs1302.project2.utility;
+
+import java.util.ArrayList;
 
 import edu.westga.cs1302.project2.model.Ingredient;
 import edu.westga.cs1302.project2.model.Recipe;
@@ -33,5 +35,25 @@ public class RecipeTextifier {
 			}
 		}
 	return text;
+	}
+	
+	/**
+	 * Return the list of recipes as a string.
+	 * 
+	 * @precondition none
+	 * @postcondition none
+	 * 
+	 * @param recipes the list of recipes
+	 * 
+	 * @return recipesListText the list of recipes as a String
+	 */
+
+	public static String recipeListFormatter(ArrayList<Recipe> recipes) {
+		StringBuilder recipesListText = new StringBuilder();
+		for (Recipe currentRecipe : recipes) {
+			recipesListText.append(getText(currentRecipe));
+			System.lineSeparator();
+		}
+		return recipesListText.toString();
 	}
 }

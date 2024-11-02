@@ -7,7 +7,7 @@ import java.util.List;
 import edu.westga.cs1302.project2.model.IngredientNameComparator;
 import edu.westga.cs1302.project2.model.IngredientTypeComparator;
 import edu.westga.cs1302.project2.model.Recipe;
-import edu.westga.cs1302.project2.model.CSVRecipePersistenceManager;
+import edu.westga.cs1302.project2.model.RecipeSaver;
 import edu.westga.cs1302.project2.model.Ingredient;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -81,7 +81,7 @@ public class MainWindow {
     		recipe.addItem(currIngredient);
     	}
     	try {
-    		CSVRecipePersistenceManager.saveRecipeData(recipe);
+    		RecipeSaver.saveRecipeData(recipe);
     	} catch (IOException ioe) {
     		Alert alert = new Alert(AlertType.ERROR);
     		alert.setContentText("File writer error.");
