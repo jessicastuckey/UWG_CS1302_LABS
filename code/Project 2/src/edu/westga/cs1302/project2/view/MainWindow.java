@@ -7,6 +7,7 @@ import java.util.List;
 import edu.westga.cs1302.project2.model.IngredientNameComparator;
 import edu.westga.cs1302.project2.model.IngredientTypeComparator;
 import edu.westga.cs1302.project2.model.Recipe;
+import edu.westga.cs1302.project2.model.RecipeLoader;
 import edu.westga.cs1302.project2.model.RecipeSaver;
 import edu.westga.cs1302.project2.model.Ingredient;
 import javafx.collections.ObservableList;
@@ -121,8 +122,18 @@ public class MainWindow {
 	  
 	  @FXML
 	    void searchRecipes(ActionEvent event) {
-
+		Ingredient selectedIngredient = this.ingredientsList.getSelectionModel().getSelectedItem();
+		if (selectedIngredient == null) {
+    		Alert alert = new Alert(AlertType.ERROR);
+    		alert.setContentText("No recipe selected.");
+    		alert.showAndWait();
+    		return;
+			}
+		List<Ingredient> ingredientList = this.recipeList.getItems();
+		for (Ingredient currentRecipe : ingredientList) {
+		RecipeLoader.findRecipesWithIngredient(selectedIngredient);
 	    }
+	}
 	  
 	@FXML
 	void initialize() {

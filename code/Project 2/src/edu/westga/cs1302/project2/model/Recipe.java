@@ -14,9 +14,15 @@ public class Recipe {
 	/**
 	 * Create a new empty recipe
 	 * 
+	 * @precondition name != null && !name.isEmpty()
+	 * @postcondition getName() == name
+	 * 
 	 * @param name the name of the Recipe
 	 */
 	public Recipe(String name) {
+		if (name == null || name.isEmpty()) {
+			throw new IllegalArgumentException("Must provide a valid name.");
+		}
 		this.name = name;
 		this.ingredientsList = new ArrayList<Ingredient>();
 	}
