@@ -23,7 +23,7 @@
       <Line endX="-412.0" endY="-133.0" layoutX="427.0" layoutY="212.0" startX="-200.0" startY="-133.0" />
       <ComboBox fx:id="sortComboBox" layoutX="46.0" layoutY="584.0" prefWidth="150.0" />
       <Label layoutX="102.0" layoutY="561.0" text="Sort By" />
-      <ListView fx:id="recipeList" layoutX="259.0" layoutY="101.0" prefHeight="446.0" prefWidth="200.0" />
+      <ListView fx:id="recipeIngredientList" layoutX="259.0" layoutY="101.0" prefHeight="446.0" prefWidth="200.0" />
       <Button layoutX="473.0" layoutY="100.0" mnemonicParsing="false" onAction="#addToRecipe" text="Add Ingredient" />
       <TextField fx:id="recipeName" layoutX="284.0" layoutY="60.0" />
       <Label layoutX="323.0" layoutY="38.0" text="Recipe Name" />

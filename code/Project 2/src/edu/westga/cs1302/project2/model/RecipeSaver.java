@@ -1,5 +1,7 @@
 package edu.westga.cs1302.project2.model;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -26,18 +28,26 @@ public class RecipeSaver {
 	 * @throws IOException
 	 */
 	public static void saveRecipeData(Recipe recipe) throws IOException {
-		if (recipe == null) {
-			throw new IllegalArgumentException("recipe cannot be null");
-		}
-		ArrayList<Recipe> recipeList = RecipeLoader.loadRecipeData();
-		if (isDuplicateRecipe(recipeList, recipe)) {
-			throw new IllegalStateException();
-		}
-		try (PrintWriter writer = new PrintWriter(DATA_FILE)) {
-			writer.write(RecipeTextifier.getText(recipe));
-		} catch (IOException writerException) {
-			System.out.print("Failed to write to file");
-		}
+	    if (recipe == null) {
+	        throw new IllegalArgumentException("Recipe cannot be null");
+	    }
+	    
+	    File dataFile = new File(RecipeSaver.DATA_FILE);
+	    if (!dataFile.exists()) {
+	        dataFile.createNewFile();
+	    }
+
+	    ArrayList<Recipe> recipeList = RecipeLoader.loadRecipeData();
+	    if (isDuplicateRecipe(recipeList, recipe)) {
+	        throw new IllegalStateException("Duplicate recipe: " + recipe.getName());
+	    }
+
+	    try (FileWriter fileWriter = new FileWriter(DATA_FILE, true);
+	         PrintWriter writer = new PrintWriter(fileWriter)) {
+	        writer.println(RecipeTextifier.getText(recipe));
+	    } catch (IOException writerException) {
+	        throw new IOException("Failed to write to file: " + writerException.getMessage(), writerException);
+	    }
 	}
 
 	private static boolean isDuplicateRecipe(ArrayList<Recipe> recipeList, Recipe recipe) {

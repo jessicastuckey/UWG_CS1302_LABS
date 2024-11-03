@@ -1,6 +1,7 @@
 package edu.westga.cs1302.project2.view;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class MainWindow {
 	@FXML private ListView<Ingredient> ingredientsList;
 	@FXML private TextField ingredientName;
     @FXML private ComboBox<Comparator<Ingredient>> sortComboBox;
-    @FXML private ListView<Ingredient> recipeList;
+    @FXML private ListView<Ingredient> recipeIngredientList;
     @FXML private TextField recipeName;
     @FXML private TextArea recipeDisplay;
     @FXML private Button recipeDisplayButton;
@@ -56,44 +57,49 @@ public class MainWindow {
     void addToRecipe(ActionEvent event) {
     	Ingredient selectedIngredient = this.ingredientsList.getSelectionModel().getSelectedItem();
 		if (selectedIngredient != null) {
-			this.recipeList.getItems().add(selectedIngredient);
+			this.recipeIngredientList.getItems().add(selectedIngredient);
 		}
-		this.recipeList.refresh();
+		this.recipeIngredientList.refresh();
     }
 
     @FXML
     void createRecipe(ActionEvent event) {
-    	String recipeName = this.recipeName.getText();
-    	List<Ingredient> ingredientList = this.recipeList.getItems();
-    	if (recipeName == null || recipeName.isEmpty()) {
-    		Alert alert = new Alert(AlertType.ERROR);
-    		alert.setContentText("Invalid recipe name");
-    		alert.showAndWait();
-    		return;
-    	}
-    	if (ingredientList.isEmpty()) {
-    		Alert alert = new Alert(AlertType.ERROR);
-    		alert.setContentText("Ingredient list is empty.");
-    		alert.showAndWait();
-    		return;
-    	}
-    	Recipe recipe = new Recipe(recipeName);
-    	for (Ingredient currIngredient : ingredientList) {
-    		recipe.addItem(currIngredient);
-    	}
-    	try {
-    		RecipeSaver.saveRecipeData(recipe);
-    	} catch (IOException ioe) {
-    		Alert alert = new Alert(AlertType.ERROR);
-    		alert.setContentText("File writer error.");
-    		alert.showAndWait();
-    		return;
-    	} catch (IllegalStateException ise) {
-    		Alert alert = new Alert(AlertType.ERROR);
-    		alert.setContentText("Recipe already exists.");
-    		alert.showAndWait();
-    		return;
-    	}
+        String recipeName = this.recipeName.getText();
+        List<Ingredient> ingredientList = new ArrayList<>(this.recipeIngredientList.getItems());
+        
+        if (recipeName == null || recipeName.isEmpty()) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setContentText("Invalid recipe name");
+            alert.showAndWait();
+            return;
+        }
+        
+        if (ingredientList.isEmpty()) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setContentText("Ingredient list is empty.");
+            alert.showAndWait();
+            return;
+        }
+        
+        Recipe recipe = new Recipe(recipeName);
+        for (Ingredient currIngredient : ingredientList) {
+            recipe.addItem(currIngredient);
+        }
+        
+        try {
+            RecipeSaver.saveRecipeData(recipe);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setContentText("File writer error: " + ioe.getMessage());
+            alert.showAndWait();
+            return;
+        } catch (IllegalStateException ise) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setContentText("Recipe already exists.");
+            alert.showAndWait();
+            return;
+        }
     }
 
 	@FXML
@@ -121,20 +127,28 @@ public class MainWindow {
 	  }
 	  
 	  @FXML
-	    void searchRecipes(ActionEvent event) {
-		Ingredient selectedIngredient = this.ingredientsList.getSelectionModel().getSelectedItem();
-		if (selectedIngredient == null) {
-    		Alert alert = new Alert(AlertType.ERROR);
-    		alert.setContentText("No recipe selected.");
-    		alert.showAndWait();
-    		return;
-			}
-		List<Ingredient> ingredientList = this.recipeList.getItems();
-		for (Ingredient currentRecipe : ingredientList) {
-		RecipeLoader.findRecipesWithIngredient(selectedIngredient);
-	    }
-	}
-	  
+	  void searchRecipes(ActionEvent event) {
+	      Ingredient selectedIngredient = this.ingredientsList.getSelectionModel().getSelectedItem();
+	      if (selectedIngredient == null) {
+	          Alert alert = new Alert(AlertType.ERROR);
+	          alert.setContentText("No ingredient selected.");
+	          alert.showAndWait();
+	          return;
+	      }
+
+	      List<Recipe> recipesWithIngredient = RecipeLoader.findRecipesWithIngredient(selectedIngredient);
+	     
+	      if (recipesWithIngredient.isEmpty()) {
+	          this.recipeDisplay.setText("No recipes found with the selected ingredient.");
+	      } else {
+	          StringBuilder recipesString = new StringBuilder();
+	          for (Recipe recipe : recipesWithIngredient) {
+	              recipesString.append(recipe.toString()).append("\n");
+	          }
+	          this.recipeDisplay.setText(recipesString.toString());
+	      }
+	  }
+	   
 	@FXML
 	void initialize() {
 		this.ingredientType.getItems().add("Vegetable");

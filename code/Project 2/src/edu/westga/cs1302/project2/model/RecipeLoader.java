@@ -22,28 +22,53 @@ public class RecipeLoader {
 	 * 
 	 * @return the recipe loaded
 	 */
-	public static ArrayList<Recipe> loadRecipeData() throws FileNotFoundException, IOException {
-		ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
-		File inputFile = new File(RecipeSaver.DATA_FILE);
-		try (Scanner reader = new Scanner(inputFile)) {
-			String[] parts = reader.nextLine().strip().split(",");
-			Recipe recipe = new Recipe(parts[0]);
-			try {
-				parts = reader.nextLine().strip().split(",");
-				for (int index = 1; index < parts.length; index += 2) {
-					String ingredientName = parts[index];
-					String type = parts[index + 1];
-					Ingredient ingredient = new Ingredient(ingredientName, type);
-					recipe.addItem(ingredient);
-				}
-			} catch (IllegalArgumentException recipeDataError) {
-				throw new IOException("Unable to create recipe, bad name/type on line ");
-				}
-			} catch (FileNotFoundException fnfe) {
-				return new ArrayList<Recipe>();
-			}
-			return recipeList;
-		}
+	public static ArrayList<Recipe> loadRecipeData() throws IOException {
+	    ArrayList<Recipe> recipeList = new ArrayList<>();
+	    File inputFile = new File(RecipeSaver.DATA_FILE);
+	    
+	    if (!inputFile.exists()) {
+	        throw new FileNotFoundException("Data file not found: " + RecipeSaver.DATA_FILE);
+	    }
+
+	    try (Scanner reader = new Scanner(inputFile)) {
+	        while (reader.hasNextLine()) {
+	            String line = reader.nextLine().strip();
+	            System.out.println("Reading line: " + line);
+	            
+	            String[] parts = line.split(", ");
+	            if (parts.length < 1) {
+	                throw new IOException("Invalid recipe format: " + line);
+	            }
+
+	            Recipe recipe = new Recipe(parts[0]);
+
+	            for (int index = 1; index < parts.length; index++) {
+	                String ingredientString = parts[index].trim();
+	                if (ingredientString.isEmpty()) {
+	                    continue;
+	                }
+	                
+	                String[] ingredientParts = ingredientString.split(", ");
+	                if (ingredientParts.length != 2) {
+	                    throw new IOException("Incomplete ingredient data for recipe: " + recipe.getName());
+	                }
+
+	                String ingredientName = ingredientParts[0].trim();
+	                String type = ingredientParts[1].trim();
+	                Ingredient ingredient = new Ingredient(ingredientName, type);
+	                recipe.addItem(ingredient);
+	            }
+
+	            recipeList.add(recipe);
+	        }
+	    } catch (FileNotFoundException fnfe) {
+	        throw new FileNotFoundException("Error reading file: " + fnfe.getMessage());
+	    } catch (IllegalArgumentException recipeDataError) {
+	        throw new IOException("Unable to create recipe, bad data: " + recipeDataError.getMessage());
+	    }
+
+	    return recipeList;
+	}
 	
 	/**
 	 * Finds recipes that contain a specified ingredient
