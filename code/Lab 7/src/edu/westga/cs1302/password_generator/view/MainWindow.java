@@ -1,15 +1,12 @@
 package edu.westga.cs1302.password_generator.view;
 
-import java.util.Random;
-
-import edu.westga.cs1302.password_generator.model.PasswordGenerator;
 import edu.westga.cs1302.password_generator.viewmodel.PasswordGeneratorViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -30,9 +27,8 @@ public class MainWindow {
 
     @FXML
     void generatePassword(ActionEvent event) {
-    	String password = "";
     	try {
-    		password = this.viewModel.generatePassword();
+    		this.viewModel.generatePassword();
     	} catch (NumberFormatException numberError) {
     		Alert alert = new Alert(AlertType.ERROR);
     		alert.setContentText("Invalid Minimum Length: must be a positive integer, but was " + this.minimumLength.getText());
@@ -44,8 +40,6 @@ public class MainWindow {
     		alert.show();
     		return;
     	}
-    	
-    	this.output.setText(password);
     }
 
     @FXML
@@ -57,9 +51,12 @@ public class MainWindow {
         assert this.output != null : "fx:id=\"output\" was not injected: check your FXML file 'MainWindow.fxml'.";
         
         this.viewModel = new PasswordGeneratorViewModel();
+        this.minimumLength.textProperty().bindBidirectional(this.viewModel.getMinLengthProperty());
+        this.mustIncludeDigits.selectedProperty().bindBidirectional(this.viewModel.getIncludeDigitsProperty());
+        this.mustIncludeLowerCaseLetters.selectedProperty().bindBidirectional(this.viewModel.getLowerCaseLettersProperty());
+        this.mustIncludeUpperCaseLetters.selectedProperty().bindBidirectional(this.viewModel.getUpperCaseLettersProperty());
+        this.output.textProperty().bindBidirectional(this.viewModel.getOutputProperty());
+        
         this.minimumLength.setText("1");
-        //this.errorText.textProperty().bind(null);
-        
-        
     }
 }

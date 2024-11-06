@@ -26,7 +26,7 @@ class TestGeneratePassword {
 	public void testNoErrors() {
 		PasswordGeneratorViewModel generator = new PasswordGeneratorViewModel();
 		generator.getMinLengthProperty().setValue("5");
-		String password = generator.generatePassword();
-		assertTrue(5 <= password.length());
+		generator.generatePassword();
+		assertTrue(5 <= generator.getOutputProperty().getValue().length());
 	}
 }

@@ -8,6 +8,12 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * The Class ViewModel.
+ * 
+ * @author js00547
+ * @version Fall 2024
+ */
 public class PasswordGeneratorViewModel {
 	private StringProperty minLengthProperty;
 	private StringProperty outputProperty;
@@ -17,6 +23,10 @@ public class PasswordGeneratorViewModel {
 	
 	private PasswordGenerator generator;
 	
+	/**
+	 * Instantiates a new password view model.
+	 */
+
 	public PasswordGeneratorViewModel() {
 		this.minLengthProperty = new SimpleStringProperty();
 		this.outputProperty = new SimpleStringProperty();
@@ -28,27 +38,35 @@ public class PasswordGeneratorViewModel {
 	}
 	
 	/**
+	 * Gets the minimum length property
+	 * 
 	 * @return the lengthProperty
 	 */
 	public StringProperty getMinLengthProperty() {
-		return minLengthProperty;
+		return this.minLengthProperty;
 	}
 
 	/**
+	 * Gets the output property
+	 * 
 	 * @return the outputProperty
 	 */
 	public StringProperty getOutputProperty() {
-		return outputProperty;
+		return this.outputProperty;
 	}
 
 	/**
+	 * Gets the include digits property
+	 * 
 	 * @return the includeDigitsProperty
 	 */
 	public BooleanProperty getIncludeDigitsProperty() {
-		return includeDigitsProperty;
+		return this.includeDigitsProperty;
 	}
 
 	/**
+	 * Gets the lower case letters property
+	 * 
 	 * @return the lowerCaseLettersProperty
 	 */
 	public BooleanProperty getLowerCaseLettersProperty() {
@@ -56,24 +74,35 @@ public class PasswordGeneratorViewModel {
 	}
 
 	/**
+	 * Gets the upper case letters property
+	 * 
 	 * @return the upperCaseLettersProperty
 	 */
 	public BooleanProperty getUpperCaseLettersProperty() {
 		return this.upperCaseLettersProperty;
 	}
 	
-	public String generatePassword() {
+	/**
+	 * Generate a password.
+	 * 
+	 * @precondition: none
+	 * @postcondition: password is generated with a minimum of one character with specified boolean values
+	 * 
+	 */
+	public void generatePassword() {
+		String password = "";
 		try {
 			int minLength = Integer.parseInt(this.minLengthProperty.getValue());
 			this.generator.setMinimumLength(minLength);
 			this.generator.setMustHaveAtLeastOneDigit(this.includeDigitsProperty.getValue());
 			this.generator.setMustHaveAtLeastOneLowerCaseLetter(this.lowerCaseLettersProperty.getValue());
 			this.generator.setMustHaveAtLeastOneUpperCaseLetter(this.upperCaseLettersProperty.getValue());
-			return this.generator.generatePassword();
+			password = this.generator.generatePassword();
 		} catch (NumberFormatException nfe) {
 			throw new NumberFormatException();
 		} catch (IllegalArgumentException iae) {
 			throw new IllegalArgumentException();
 		}
+		this.outputProperty.setValue(password);
 	}
 }
