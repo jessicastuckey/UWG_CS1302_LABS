@@ -94,22 +94,7 @@ public class ViewModel {
 	 * If an error is encountered, the password property is set to empty, and the error text property is populated with a message describing the problem.
 	 */
 	public void generatePassword() {
-    	int minimumLength = -1;
     	this.password.setValue("");
-    	
-    	try {
-    		minimumLength = Integer.parseInt(this.minimumLength.getValue());
-    	} catch (NumberFormatException numberError) {
-    		this.errorText.setValue("Invalid Minimum Length: must be a positive integer, but was " + this.minimumLength.getValue());
-    		return;
-    	}
-    	
-    	try {
-    		this.generator.setMinimumLength(minimumLength);
-    	} catch (IllegalArgumentException invalidLengthError) {
-    		this.errorText.setValue("Invalid Minimum Length: " + invalidLengthError.getMessage());
-    		return;
-    	}
     	
     	this.generator.setMustHaveAtLeastOneDigit(this.requireDigits.getValue());
     	this.generator.setMustHaveAtLeastOneLowerCaseLetter(this.requireLowercase.getValue());
@@ -119,5 +104,28 @@ public class ViewModel {
     	
     	this.password.setValue(password);
     }
+	
+	/** Verifies the minimum lenght of the password
+	 * 
+	 * @return true if valid password false if not
+	 */
+	public boolean verifyMinimumLength() {
+		int minimumLength = -1;
+		
+		try {
+    		minimumLength = Integer.parseInt(this.minimumLength.getValue());
+    	} catch (NumberFormatException numberError) {
+    		this.errorText.setValue("Invalid Minimum Length: must be a positive integer, but was " + this.minimumLength.getValue());
+    		return false;
+    	}
+    	
+    	try {
+    		this.generator.setMinimumLength(minimumLength);
+    	} catch (IllegalArgumentException invalidLengthError) {
+    		this.errorText.setValue("Invalid Minimum Length: " + invalidLengthError.getMessage());
+    		return false;
+    	}
+    	return true;
+	}
 
 }

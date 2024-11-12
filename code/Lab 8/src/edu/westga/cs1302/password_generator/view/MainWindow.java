@@ -42,5 +42,14 @@ public class MainWindow {
     				this.vm.generatePassword();
     			} 
     	);
+    	
+    	this.minimumLength.textProperty().addListener(
+    			(observable, oldValue, newValue) -> {
+    				if (!this.vm.verifyMinimumLength()) {
+    					this.errorTextLabel.setVisible(true);	
+    				} else {
+    					this.errorTextLabel.setVisible(false);
+    				}
+    			});
     }
 }
