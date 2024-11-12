@@ -17,7 +17,7 @@ public class TestGeneratePassword {
 		vm.verifyMinimumLength();
 		vm.generatePassword();
 		
-		assertTrue(vm.getPassword().getValue().length() >= 2, "checking the password property has an appropriate number of characters");
+		assertTrue(vm.getPasswords().get(vm.getPasswords().getSize()-1).length() >= 2, "checking the password property has an appropriate number of characters");
 		assertEquals("", vm.getErrorText().getValue(), "checking the error text property");
 	}
 }

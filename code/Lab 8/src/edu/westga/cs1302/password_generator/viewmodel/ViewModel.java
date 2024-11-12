@@ -4,9 +4,12 @@ import java.util.Random;
 
 import edu.westga.cs1302.password_generator.model.PasswordGenerator;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 
 /** Manages utilizing the model and makes properties available to bind the UI elements.
  * 
@@ -19,7 +22,7 @@ public class ViewModel {
 	private BooleanProperty requireLowercase;
 	private BooleanProperty requireUppercase;
 	
-	private StringProperty password;
+	private ListProperty<String> passwords;
 	private StringProperty errorText;
 	
     private PasswordGenerator generator;
@@ -32,7 +35,7 @@ public class ViewModel {
 		this.requireLowercase = new SimpleBooleanProperty(false);
 		this.requireUppercase = new SimpleBooleanProperty(false);
 		
-		this.password = new SimpleStringProperty("");
+		this.passwords = new SimpleListProperty<String>(FXCollections.observableArrayList());
 		this.errorText = new SimpleStringProperty("");
 
         Random randomNumberGenerator = new Random();
@@ -75,8 +78,8 @@ public class ViewModel {
 	 * 
 	 * @return the password property
 	 */
-	public StringProperty getPassword() {
-		return this.password;
+	public ListProperty<String> getPasswords() {
+		return this.passwords;
 	}
 
 	/** Return the error text property
@@ -94,7 +97,6 @@ public class ViewModel {
 	 * If an error is encountered, the password property is set to empty, and the error text property is populated with a message describing the problem.
 	 */
 	public void generatePassword() {
-    	this.password.setValue("");
     	
     	this.generator.setMustHaveAtLeastOneDigit(this.requireDigits.getValue());
     	this.generator.setMustHaveAtLeastOneLowerCaseLetter(this.requireLowercase.getValue());
@@ -102,7 +104,7 @@ public class ViewModel {
     	
     	String password = this.generator.generatePassword();
     	
-    	this.password.setValue(password);
+    	this.passwords.add(password);
     }
 	
 	/** Verifies the minimum lenght of the password
