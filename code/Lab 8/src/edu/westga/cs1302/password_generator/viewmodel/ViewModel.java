@@ -115,6 +115,9 @@ public class ViewModel {
 		int minimumLength = -1;
 		
 		try {
+			if (!this.minimumLength.getValue().matches("\\d+")) {
+				throw new NumberFormatException();
+			}
     		minimumLength = Integer.parseInt(this.minimumLength.getValue());
     	} catch (NumberFormatException numberError) {
     		this.errorText.setValue("Invalid Minimum Length: must be a positive integer, but was " + this.minimumLength.getValue());

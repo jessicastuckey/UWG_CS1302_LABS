@@ -21,7 +21,7 @@ class TestVerifyMinimumLength {
 	@Test
 	void testMinimumLengthNotAValidNumber() {
 		ViewModel vm = new ViewModel();
-		vm.getMinimumLength().setValue("-2");
+		vm.getMinimumLength().setValue("0");
 		
 		vm.verifyMinimumLength();
 		
