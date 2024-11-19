@@ -16,10 +16,10 @@
       <CheckBox fx:id="mustIncludeLowerCaseLetters" layoutX="12.0" layoutY="131.0" mnemonicParsing="false" text="Must Include Lower Case Letters" />
       <CheckBox fx:id="mustIncludeUpperCaseLetters" layoutX="11.0" layoutY="101.0" mnemonicParsing="false" text="Must Include Upper Case Letters" />
       <Button fx:id="generatePasswordButton" layoutX="44.0" layoutY="180.0" mnemonicParsing="false" text="Generate Password" />
-      <Label layoutX="12.0" layoutY="44.0" text="Minimum Length" />
-      <TextField fx:id="minimumLength" layoutX="116.0" layoutY="40.0" prefHeight="25.0" prefWidth="41.0" />
+      <Label layoutX="12.0" layoutY="35.0" text="Minimum Length" />
+      <TextField fx:id="minimumLength" layoutX="116.0" layoutY="31.0" prefHeight="25.0" prefWidth="41.0" />
       <TextArea fx:id="output" editable="false" layoutX="10.0" layoutY="209.0" prefHeight="169.0" prefWidth="193.0" wrapText="true" />
-      <Label fx:id="errorTextLabel" layoutX="9.0" layoutY="110.0" prefHeight="17.0" prefWidth="199.0" textFill="RED" />
+      <Label fx:id="errorTextLabel" layoutX="9.0" layoutY="57.0" prefHeight="17.0" prefWidth="199.0" textFill="RED" />
       <MenuBar layoutY="1.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">

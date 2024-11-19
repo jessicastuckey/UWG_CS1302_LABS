@@ -119,5 +119,30 @@ public class ViewModel {
     	
     	this.password.setValue(password);
     }
-
+	
+	/** Verifies the minimum lenght of the password
+	 * 
+	 * @return true if valid password false if not
+	 */
+	public boolean verifyMinimumLength() {
+		int minimumLength = -1;
+		
+		try {
+			if (!this.minimumLength.getValue().matches("\\d+")) {
+				throw new NumberFormatException();
+			}
+    		minimumLength = Integer.parseInt(this.minimumLength.getValue());
+    	} catch (NumberFormatException numberError) {
+    		this.errorText.setValue("Invalid Minimum Length: must be a positive integer, but was " + this.minimumLength.getValue());
+    		return false;
+    	}
+    	
+    	try {
+    		this.generator.setMinimumLength(minimumLength);
+    	} catch (IllegalArgumentException invalidLengthError) {
+    		this.errorText.setValue("Invalid Minimum Length: " + invalidLengthError.getMessage());
+    		return false;
+    	}
+    	return true;
+	}
 }
