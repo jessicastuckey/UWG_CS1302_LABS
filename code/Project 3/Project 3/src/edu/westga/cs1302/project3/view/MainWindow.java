@@ -1,5 +1,6 @@
 package edu.westga.cs1302.project3.view;
 
+import java.io.File;
 import java.util.ResourceBundle;
 
 import edu.westga.cs1302.project3.model.Task;
@@ -9,6 +10,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Window;
 
 /**
  * Codebehind for the Main Window of the application.
@@ -34,6 +39,8 @@ public class MainWindow {
 	private MenuItem saveTaskMenuItem;
 	@FXML
 	private ListView<Task> taskListView;
+    @FXML
+    private AnchorPane pane;
 
 	private MainWindowViewModel vm;
 
@@ -72,7 +79,22 @@ public class MainWindow {
 	}
 
 	@FXML
-	void removeTaskOnAction(ActionEvent event) {
+	void handleFileLoad(ActionEvent event) {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Open File");
+		fileChooser.getExtensionFilters().addAll(
+				new ExtensionFilter("Text Files", "*.txt"),
+				new ExtensionFilter("all Files", "*.*"));
+		
+		Window window = this.pane.getScene().getWindow();
+		File selectedFile = fileChooser.showOpenDialog(window);
+		if (selectedFile != null) {
+			this.vm.loadData(selectedFile);
+		}
+	}
+
+	@FXML
+	void handleFileSave(ActionEvent event) {
 
 	}
 }
