@@ -7,6 +7,8 @@ import edu.westga.cs1302.project3.model.Task;
 import edu.westga.cs1302.project3.viewmodel.MainWindowViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
@@ -83,18 +85,39 @@ public class MainWindow {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Open File");
 		fileChooser.getExtensionFilters().addAll(
-				new ExtensionFilter("Text Files", "*.txt"),
-				new ExtensionFilter("all Files", "*.*"));
+				new ExtensionFilter("CSV Files", "*.csv"));
 		
 		Window window = this.pane.getScene().getWindow();
 		File selectedFile = fileChooser.showOpenDialog(window);
 		if (selectedFile != null) {
-			this.vm.loadData(selectedFile);
+			try {
+				this.vm.loadData(selectedFile);
+			} catch (Exception ex) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setContentText("Invalid file format.");
+				alert.showAndWait();
+			}
 		}
 	}
 
 	@FXML
 	void handleFileSave(ActionEvent event) {
-
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Save File");
+		fileChooser.getExtensionFilters().addAll(
+				new ExtensionFilter("CSV Files", "*.csv"));
+		
+		Window window = this.pane.getScene().getWindow();
+		File selectedFile = fileChooser.showSaveDialog(window);
+		
+		if (selectedFile != null) {
+			try {
+				this.vm.saveData(selectedFile);
+			} catch (Exception ex) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setContentText("File cannot be overwritten.");
+				alert.showAndWait();
+			}
+		}
 	}
 }

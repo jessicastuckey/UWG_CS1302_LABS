@@ -66,4 +66,13 @@ public class MainWindowViewModel {
 			System.out.println("Invalid file.");
 		}
 	}
+	
+	/** Saves data to a selected file
+	 * 
+	 * @param selectedFile the file to save the task manager to
+	 */
+	public void saveData(File selectedFile) {
+			this.persistenceManager.saveTaskManager(this.taskManager, selectedFile);
+			this.updateListView(); 
+	}
 }

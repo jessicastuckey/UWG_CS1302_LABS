@@ -14,7 +14,7 @@
           <Menu mnemonicParsing="false" text="File">
             <items>
                   <MenuItem fx:id="loadTasksMenuItem" mnemonicParsing="false" onAction="#handleFileLoad" text="Load Tasks" />
-                  <MenuItem fx:id="saveTaskMenuItem" mnemonicParsing="false" onAction="#handleFileLoad" text="Save Tasks" />
+                  <MenuItem fx:id="saveTaskMenuItem" mnemonicParsing="false" onAction="#handleFileSave" text="Save Tasks" />
               <MenuItem fx:id="addTaskMenuItem" mnemonicParsing="false" text="Add Task" />
                   <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" text="Close" />
             </items>
@@ -28,6 +28,6 @@
       </MenuBar>
       <ListView fx:id="taskListView" layoutX="14.0" layoutY="34.0" prefHeight="200.0" prefWidth="200.0" />
       <Button fx:id="addTaskButton" layoutX="219.0" layoutY="34.0" mnemonicParsing="false" onAction="#addTaskOnAction" text="+" />
-      <Button fx:id="removeTaskButton" layoutX="219.0" layoutY="67.0" mnemonicParsing="false" onAction="#removeTaskOnAction" prefHeight="25.0" prefWidth="25.0" text="-" />
+      <Button fx:id="removeTaskButton" layoutX="219.0" layoutY="67.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="-" />
    </children>
 </AnchorPane>
