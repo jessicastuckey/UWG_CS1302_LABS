@@ -93,6 +93,9 @@ public class MainWindow {
 			setPropertyStage.setScene(scene);
 			setPropertyStage.initModality(Modality.APPLICATION_MODAL);
 			
+			AddTaskWindow addTaskCodeBehind = (AddTaskWindow) loader.getController();
+			addTaskCodeBehind.bindToVM(this.vm);
+			
 			setPropertyStage.showAndWait();
 		} catch (IOException error) {
 			Alert alert = new Alert(AlertType.ERROR);

@@ -9,6 +9,8 @@ import edu.westga.cs1302.project3.model.TaskManager;
 import edu.westga.cs1302.project3.model.TaskPersistenceManager;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 
 /** Manages utilizing the model and makes properties available to bind the UI elements.
@@ -18,6 +20,8 @@ import javafx.collections.FXCollections;
  */
 public class MainWindowViewModel {
 	private ListProperty<Task> tasks;
+	private StringProperty title;
+	private StringProperty description;
 	
 	private TaskManager taskManager;
 	private TaskPersistenceManager persistenceManager;
@@ -28,6 +32,8 @@ public class MainWindowViewModel {
 		this.taskManager = new TaskManager();
 		this.persistenceManager = new TaskPersistenceManager();
 		this.tasks = new SimpleListProperty<Task>(FXCollections.observableArrayList(this.taskManager.getTasks()));
+		this.title = new SimpleStringProperty();
+		this.description = new SimpleStringProperty();
 		Task task1 = new Task("Sweep the House", "Sweep the floors in the living room and kitchen.");
 		Task task2 = new Task("Cook Dinner", "Cook chicken casserole for four people.");
 		Task task3 = new Task("Get Ready for Bed", "Shower, complete a nightly skincare routine, and brush your teeth.");
@@ -74,5 +80,28 @@ public class MainWindowViewModel {
 	public void saveData(File selectedFile) {
 			this.persistenceManager.saveTaskManager(this.taskManager, selectedFile);
 			this.updateListView(); 
+	}
+	
+	/** Adds task to list of tasks
+	 * 
+	 */
+	public void addTask() {
+		Task task = new Task(this.title.get(), this.description.get());
+		this.taskManager.addItem(task);
+		this.updateListView();
+	}
+
+	/** Gets the title
+	 * @return the title
+	 */
+	public StringProperty getTitle() {
+		return this.title;
+	}
+
+	/** Gets the description
+	 * @return the description
+	 */
+	public StringProperty getDescription() {
+		return this.description;
 	}
 }
