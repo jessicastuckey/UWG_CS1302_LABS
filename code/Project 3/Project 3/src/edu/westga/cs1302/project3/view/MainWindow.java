@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import edu.westga.cs1302.project3.model.Task;
 import edu.westga.cs1302.project3.viewmodel.MainWindowViewModel;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,8 +47,8 @@ public class MainWindow {
 	private MenuItem saveTaskMenuItem;
 	@FXML
 	private ListView<Task> taskListView;
-    @FXML
-    private AnchorPane pane;
+	@FXML
+	private AnchorPane pane;
 
 	private MainWindowViewModel vm;
 
@@ -83,7 +84,8 @@ public class MainWindow {
 	@FXML
 	void addTaskOnAction(ActionEvent event) {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(edu.westga.cs1302.project3.Main.class.getResource(edu.westga.cs1302.project3.Main.ADD_TASK_WINDOW));
+		loader.setLocation(
+				edu.westga.cs1302.project3.Main.class.getResource(edu.westga.cs1302.project3.Main.ADD_TASK_WINDOW));
 		try {
 			loader.load();
 			Parent parent = loader.getRoot();
@@ -92,10 +94,10 @@ public class MainWindow {
 			setPropertyStage.setTitle(edu.westga.cs1302.project3.Main.ADD_TASK_WINDOW);
 			setPropertyStage.setScene(scene);
 			setPropertyStage.initModality(Modality.APPLICATION_MODAL);
-			
+
 			AddTaskWindow addTaskCodeBehind = (AddTaskWindow) loader.getController();
 			addTaskCodeBehind.bindToVM(this.vm);
-			
+
 			setPropertyStage.showAndWait();
 		} catch (IOException error) {
 			Alert alert = new Alert(AlertType.ERROR);
@@ -108,9 +110,8 @@ public class MainWindow {
 	void handleFileLoad(ActionEvent event) {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Open File");
-		fileChooser.getExtensionFilters().addAll(
-				new ExtensionFilter("CSV Files", "*.csv"));
-		
+		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("CSV Files", "*.csv"));
+
 		Window window = this.pane.getScene().getWindow();
 		File selectedFile = fileChooser.showOpenDialog(window);
 		if (selectedFile != null) {
@@ -128,12 +129,11 @@ public class MainWindow {
 	void handleFileSave(ActionEvent event) {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Save File");
-		fileChooser.getExtensionFilters().addAll(
-				new ExtensionFilter("CSV Files", "*.csv"));
-		
+		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("CSV Files", "*.csv"));
+
 		Window window = this.pane.getScene().getWindow();
 		File selectedFile = fileChooser.showSaveDialog(window);
-		
+
 		if (selectedFile != null) {
 			try {
 				this.vm.saveData(selectedFile);
@@ -143,5 +143,31 @@ public class MainWindow {
 				alert.showAndWait();
 			}
 		}
+	}
+
+	@FXML
+	void removeTaskOnAction(ActionEvent event) {
+		Task task = this.taskListView.getSelectionModel().getSelectedItem();
+		try {
+			this.vm.removeTask(task);
+		} catch (Exception exc) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setContentText("Error in removing task.");
+			alert.showAndWait();
+		}
+	}
+	
+	@FXML
+	void closeOnAction() {
+		Platform.exit();
+	}
+	
+	@FXML
+	void aboutOnAction() {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("About");
+		alert.setHeaderText("Project Information");
+		alert.setContentText("TaskManager contains a list of taks and supposts adding and removing taks with titles and description. Author: Jessica Stuckey");
+		alert.showAndWait();
 	}
 }

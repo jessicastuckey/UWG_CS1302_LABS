@@ -15,19 +15,19 @@
             <items>
                   <MenuItem fx:id="loadTasksMenuItem" mnemonicParsing="false" onAction="#handleFileLoad" text="Load Tasks" />
                   <MenuItem fx:id="saveTaskMenuItem" mnemonicParsing="false" onAction="#handleFileSave" text="Save Tasks" />
-              <MenuItem fx:id="addTaskMenuItem" mnemonicParsing="false" text="Add Task" />
-                  <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="addTaskMenuItem" mnemonicParsing="false" onAction="#addTaskOnAction" text="Add Task" />
+                  <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" onAction="#closeOnAction" text="Close" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#aboutOnAction" text="About" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
       <ListView fx:id="taskListView" layoutX="14.0" layoutY="34.0" prefHeight="200.0" prefWidth="200.0" />
       <Button fx:id="addTaskButton" layoutX="219.0" layoutY="34.0" mnemonicParsing="false" onAction="#addTaskOnAction" text="+" />
-      <Button fx:id="removeTaskButton" layoutX="219.0" layoutY="67.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="-" />
+      <Button fx:id="removeTaskButton" layoutX="219.0" layoutY="67.0" mnemonicParsing="false" onAction="#removeTaskOnAction" prefHeight="25.0" prefWidth="25.0" text="-" />
    </children>
 </AnchorPane>

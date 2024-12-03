@@ -104,4 +104,13 @@ public class MainWindowViewModel {
 	public StringProperty getDescription() {
 		return this.description;
 	}
+	
+	/** Removes task from task list
+	 * 
+	 * @param task to be removed
+	 */
+	public void removeTask(Task task) {
+		this.taskManager.removeItem(task.getTitle());
+		this.updateListView();
+	}
 }
