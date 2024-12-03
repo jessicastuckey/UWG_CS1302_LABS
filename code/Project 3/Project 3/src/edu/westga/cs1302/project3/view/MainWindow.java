@@ -96,7 +96,7 @@ public class MainWindow {
 			setPropertyStage.showAndWait();
 		} catch (IOException error) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setContentText("Unable to load properties window.");
+			alert.setContentText("Unable to load properties window." + error.getMessage());
 			alert.showAndWait();
 		}
 	}

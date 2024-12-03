@@ -1,6 +1,9 @@
 package edu.westga.cs1302.project3.view;
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -33,6 +36,11 @@ public class AddTaskWindow {
 		assert this.titleTextField != null
 				: "fx:id=\"titleTextField\" was not injected: check your FXML file 'AddTaskWindow.fxml'.";
 
-		
 	}
+
+    @FXML
+    void cancelOnAction(ActionEvent event) {
+    	this.titleTextField.getParent().getScene().getWindow().hide();
+    }
+	
 }
