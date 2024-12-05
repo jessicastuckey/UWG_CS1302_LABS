@@ -1,6 +1,8 @@
 package edu.westga.cs1302.project3.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Stores a set of Tasks
@@ -11,11 +13,14 @@ import java.util.ArrayList;
 
 public class TaskManager {
 	private ArrayList<Task> taskList;
+	private Map<String, Task> taskMap;
 
-	/** Creates an empty list for tasks
+	/**
+	 * Creates an empty list for tasks
 	 */
 	public TaskManager() {
 		this.taskList = new ArrayList<>();
+		this.taskMap = new HashMap<String, Task>();
 	}
 
 	/**
@@ -41,10 +46,15 @@ public class TaskManager {
 		if (task == null) {
 			throw new IllegalArgumentException("task must not be null.");
 		}
+		if (this.isDuplicate(task)) {
+			throw new IllegalArgumentException("Task cannot have duplicate title.");
+		}
 		this.taskList.add(task);
+		this.taskMap.put(task.getTitle(), task);
 	}
 
-	/** Removes a sepcified task from the TaskManager
+	/**
+	 * Removes a sepcified task from the TaskManager
 	 * 
 	 * @param taskTitle the title of the task to be removed
 	 */
@@ -60,5 +70,15 @@ public class TaskManager {
 			}
 		}
 		this.taskList.remove(taskToRemove);
+		this.taskMap.remove(taskTitle);
+	}
+
+	private boolean isDuplicate(Task task) {
+		try {
+			this.taskMap.get(task.getTitle()).getTitle();
+			return true;
+		} catch (NullPointerException npe) {
+			return false;
+		}
 	}
 }

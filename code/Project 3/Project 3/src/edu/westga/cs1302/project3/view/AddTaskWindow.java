@@ -53,7 +53,7 @@ public class AddTaskWindow {
     		this.cancelOnAction(event);
     	} catch (Exception exc) {
     		Alert alert = new Alert(AlertType.ERROR);
-    		alert.setContentText("Error when adding task " + exc.getMessage());
+    		alert.setContentText("Error when adding task: " + exc.getMessage());
     		alert.showAndWait();
     	}
     }

@@ -110,7 +110,7 @@ public class MainWindow {
 	void handleFileLoad(ActionEvent event) {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Open File");
-		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("CSV Files", "*.csv"));
+		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("TSV Files", "*.tsv"));
 
 		Window window = this.pane.getScene().getWindow();
 		File selectedFile = fileChooser.showOpenDialog(window);
@@ -129,7 +129,7 @@ public class MainWindow {
 	void handleFileSave(ActionEvent event) {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Save File");
-		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("CSV Files", "*.csv"));
+		fileChooser.getExtensionFilters().addAll(new ExtensionFilter("TSV Files", "*.tsv"));
 
 		Window window = this.pane.getScene().getWindow();
 		File selectedFile = fileChooser.showSaveDialog(window);

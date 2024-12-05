@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import edu.westga.cs1302.project3.model.Task;
 import edu.westga.cs1302.project3.model.TaskManager;
-import edu.westga.cs1302.project3.model.TaskPersistenceManager;
+import edu.westga.cs1302.project3.utility.TaskPersistenceManager;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -53,6 +53,20 @@ public class MainWindowViewModel {
 		return this.tasks;
 	}
 	
+	/** Gets the title
+	 * @return the title
+	 */
+	public StringProperty getTitle() {
+		return this.title;
+	}
+
+	/** Gets the description
+	 * @return the description
+	 */
+	public StringProperty getDescription() {
+		return this.description;
+	}
+	
 	private void updateListView() {
 		this.tasks.setValue(FXCollections.observableArrayList(this.taskManager.getTasks()));
 	}
@@ -67,9 +81,9 @@ public class MainWindowViewModel {
 			this.taskManager = this.persistenceManager.loadTaskManager(selectedFile);
 			this.updateListView();
 		} catch (FileNotFoundException fnfe) {
-			System.out.println("File was not found.");
+			throw new IllegalArgumentException("File was not found.");
 		} catch (IOException ioe) {
-			System.out.println("Invalid file.");
+			throw new IllegalArgumentException("Invalid file.");
 		}
 	}
 	
@@ -89,20 +103,6 @@ public class MainWindowViewModel {
 		Task task = new Task(this.title.get(), this.description.get());
 		this.taskManager.addItem(task);
 		this.updateListView();
-	}
-
-	/** Gets the title
-	 * @return the title
-	 */
-	public StringProperty getTitle() {
-		return this.title;
-	}
-
-	/** Gets the description
-	 * @return the description
-	 */
-	public StringProperty getDescription() {
-		return this.description;
 	}
 	
 	/** Removes task from task list

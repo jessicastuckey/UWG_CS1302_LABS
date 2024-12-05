@@ -1,10 +1,13 @@
-package edu.westga.cs1302.project3.model;
+package edu.westga.cs1302.project3.utility;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+
+import edu.westga.cs1302.project3.model.Task;
+import edu.westga.cs1302.project3.model.TaskManager;
 
 /** Supports saving and loading functions for TaskManager
  * 
@@ -36,11 +39,11 @@ public class TaskPersistenceManager {
 		try (PrintWriter writer = new PrintWriter(file)) {
 			String output = "";
 			for (Task currTask : taskManager.getTasks()) {
-				output += currTask.getTitle() + "," + currTask.getDescription() + ",";
+				output += currTask.getTitle() + "\t" + currTask.getDescription() + "\n";
 			}
 			writer.println(output);
 		} catch (IOException writerException) {
-			System.out.print("Failed to write to file");
+			throw new IllegalArgumentException("Failed to write to file.");
 		}
 	}
 	
@@ -62,7 +65,11 @@ public class TaskPersistenceManager {
 		TaskManager taskManager = new TaskManager();
 			try (Scanner scnr = new Scanner(inputFile)) {
 				while (scnr.hasNextLine()) {
-					String[] parts = scnr.nextLine().strip().split(",");
+					String line = scnr.nextLine();
+					if (line.isBlank()) {
+						break;
+					}
+					String[] parts = line.strip().split("\t");
 					Task task = new Task(parts[0], parts[1]);
 					taskManager.addItem(task);
 				}
