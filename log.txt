@@ -1,0 +1,435 @@
+commit 43d733728e3bce8fdfca46ab3a19e70af8307b7e
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Thu Dec 5 15:27:50 2024 -0500
+
+    Implimented Task 4 and Testing
+    
+    Implimented Map functionality. Also adde tests for viewmodel, model, and utility packages. Clean up code in various classes to fix issues and allow for better testing.
+
+commit ab4c97c5daa0f82c27a93b86ffb1c55b33d243f4
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Dec 3 18:07:38 2024 -0500
+
+    Implimented Task 3D
+    
+    Created a removeTask method and connected functionality to the menu items.
+
+commit 86990155cbe1922318986f89c07bab2660af1089
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Dec 3 17:35:57 2024 -0500
+
+    Implimented Task 3C
+    
+    Added appropriate properties to viewmodel and created addTask method in both viewmodel and AddTaskWindow. Also bound viewmodel addTaskWindow controller.
+
+commit 8ace58f140ac26701c8f2d48ff6f9e97154d376b
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Dec 3 16:57:31 2024 -0500
+
+    Implimented Task 3B
+    
+    Created method functionality to close the AddTaskWindow when the close button is pressed.
+
+commit b4f175468fcccbdbb732d3fadbf6cc4dbf9fb021
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Dec 3 16:38:23 2024 -0500
+
+    Implimented Task 3A
+    
+    Created the controller for AddWindow and added functionality to open the AddWindow when the + button is pressed.
+
+commit 4293e4dfe57ea18402da7a2f6b51b403ba7bbc36
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Dec 3 15:59:10 2024 -0500
+
+    Implimented Task 2C
+    
+    Implimented functionality in the viewmodel to display a file chooser to save files. It accepts csv files in the appropriate format. Also added alert functionality for the load method from task 2b.
+
+commit 4bcb89262cc8f9e0dd07185678e3cd971b7e977e
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Mon Dec 2 18:34:50 2024 -0500
+
+    Implimented Task 2B
+    
+    Created a load method in the viewmodel to load data from a selected file.
+
+commit 16c3cf96fe12f8a46297a8504cab2da10e413e1f
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Mon Dec 2 18:01:16 2024 -0500
+
+    Implimented Task 2A
+    
+    Created a ViewModel class and created bindings for the ListView property. Added default tasks to be displayed on startup, only including the title on the ListView.
+
+commit 921c0623fa8a68a0fab1a50f2570c8b74f9c6d6a
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Mon Dec 2 16:44:36 2024 -0500
+
+    Implimented Task 1C
+    
+    Created TaskPersistenceManager to support loading and saving a TaskManager.
+
+commit a9dc217a31891b077a14e8289e0c6fa2da9e5ec5
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Mon Dec 2 15:55:34 2024 -0500
+
+    Implimented Task 1B
+    
+    Added a TaskManager class that stores tasks in an arraylist and supports adding and removing tasks.
+
+commit 8ed2f2b6e5d008b9869f903048c0d95acad0e8a7
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Mon Dec 2 11:26:18 2024 -0500
+
+    Implimented Task 1A
+    
+    Created Task class and a test class to test the Task constructor.
+
+commit 0d03be7584698365df9e6b0e3eaf174d5aa5572f
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Thu Nov 21 16:32:20 2024 -0500
+
+    Adding P3 Starter
+    
+    Adding Project 3 Starter files into the code folder of the repo.
+
+commit 71991ae476c7a711dad4d5165ebad2a2c15d7c57
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Nov 19 16:48:21 2024 -0500
+
+    Fixing Bugs and Feature 2
+    
+    Random class glitched and needed to be fixed. Implimented feature 2 by adding a change listener that disables the generate password button when the minimum length is invalid. Also added the verifyMinimumLength method.
+
+commit 3daaf5c12816213f6b346bc7938415d64461d85c
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Nov 19 15:52:24 2024 -0500
+
+    Implimented Feature 1
+    
+    Added a menu bar with Close and About MenuItems. Added code to display a popup with information on About and to close the window on Close.
+
+commit 202169c0c464e11b78157286c9ae221f69a5572e
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Nov 19 15:18:37 2024 -0500
+
+    Catching Remote Up to Date
+    
+    Committing changes that were not caught it last commit. Changes were made from class instruction.
+
+commit 03417f7f3ab010e22039c49f1d85e4bff56a4391
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Thu Nov 14 15:12:59 2024 -0500
+
+    Adding Lab 9 Starter
+    
+    Adding Lab 9 Start Files into the code folder.
+
+commit 0bc46392a18787f9c1b13ae8bb9b6537b7d424e4
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Nov 12 17:00:07 2024 -0500
+
+    Modified Verification Process
+    
+    Used a regular expression to check if the input for minimum length is a number.
+
+commit a01e2d15cbac99681cad344a35e9a1bc42dcb440
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Nov 12 16:41:31 2024 -0500
+
+    Implimented Feature 2
+    
+    Changed GUI to utilize a listView to store multiple passwords, viewModel also utilizes a listView, and corrected all resulting errors.
+
+commit 641fa8ec0fe42a890a09dd977f6bb4b353a42853
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Nov 12 16:18:05 2024 -0500
+
+    Implimented Feature 1
+    
+    Added change listener for the minimum length property, created a new verifyMinimumLength method, and implimented appropriate test classes.
+
+commit 4964669dadb2c8f2cd50773036b6be7616bef947
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Nov 12 15:33:49 2024 -0500
+
+    Random File Changes
+    
+    Moving my Lab 8 into the eclipse workspace somehow deleted and changed a bunch of random files from other projects. Don't ask me why, I have no idea. Committing those I guess.
+
+commit 76c99b99777b5fda34a618de9702cdbab39b6dab
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Nov 12 15:28:16 2024 -0500
+
+    Adding Starter for Lab 8
+    
+    Adding starter files for Lab 8, including changes we made in class.
+
+commit eee66bdbeb598d764964160d4755ab8a8c6c5264
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Wed Nov 6 16:06:23 2024 -0500
+
+    Implimented Feature 2
+    
+    Integrated the new viewmodel class into the mainwindow to complete functionality.
+
+commit c638084bfee4550f89842bed2edd0e48dec797f1
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Nov 5 18:43:42 2024 -0500
+
+    Added Test Class
+    
+    Added test class for viewmodel.
+
+commit fbbe823a81689d784a0ad6e0fdcf619b8af2e410
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Nov 5 18:28:02 2024 -0500
+
+    Created ViewModel class
+    
+    Moved model functionality from MainWindow to ViewModel class. Removed references to the model in MainWindow, causing errors that will be fized in feature 2.
+
+commit 24d5a6192ee10e69a8703042312d69e81bcbcdc8
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Sun Nov 3 11:51:28 2024 -0500
+
+    Reworked Code and Task 3C
+    
+    Reworked code in classes to try to fix errors being thrown in UI, ultimately couldn't fix them. Added implimentation of Tak 3C in MainWindow. Sorry, I tried my best.
+
+commit 10c6e35c0d71d2ce4ccc4ef8d0cb329a20725fc6
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Sun Nov 3 00:05:36 2024 -0400
+
+    Added Test Classes
+    
+    Added test classes for model and utility classes. Also began implimenting Task 3C, but I'm making a commit now to save the testing and continue to impliment the task on a seperate commit.
+
+commit b9091d7d3505e7c9e0519db8fcdcd67bbd007523
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Sat Nov 2 17:32:36 2024 -0400
+
+    Implimented Task 3B
+    
+    Renamed a few classes for clarity on their purpose. Moved load functionality from RecipeSaver to its own Load class. Also added further functionality for formatting a list of recipes as a String.
+
+commit 57419bbb4b475651d90a28dd712e96b7d332a15d
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Sat Nov 2 11:16:38 2024 -0400
+
+    Implimented Task 3A
+    
+    Added a TextArea and Button to support displaying recipes in the GUI. Updated MainWindow according to the sample skeleton after adding the GUI elements.
+
+commit 641af48b6fdc02134e432cb4f897ae11a208bf5e
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Thu Oct 31 19:03:19 2024 -0400
+
+    Implimented Task 2C
+    
+    Connected classes with FXML in MainWindow. Allowed for adding ingredients to recipes and saving recipes through the UI.
+
+commit e8e514be343006980ade6fd1bd6ceddac290a6e2
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Thu Oct 31 18:39:28 2024 -0400
+
+    Implimented Task 2B
+    
+    Added Recipe, Textifier, and writer classes. Added save and load functionality to save recipes and to check if the same recipe already exists.
+
+commit 7c340b98d4663b35dcd2acc734c30d4fbe07bac5
+Merge: 9879e7d 361e778
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Thu Oct 31 18:19:17 2024 -0400
+
+    Merge branch 'master' into feature-2
+
+commit 361e778a50bbb02cf5f54077b20bc37dc0ec1814
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Thu Oct 31 15:39:46 2024 -0400
+
+    Actually Added Lab 7 Files
+    
+    Lab 7 was not included in last commit. Is now added into the repo.
+
+commit 9879e7d6106b2487feb9b1a9bedbde29cf32c427
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Wed Oct 30 23:48:16 2024 -0400
+
+    Implimented Task 2A
+    
+    Updated GUI for functionality for task 2. Added ListView, buttons, and a label in preparation for supporting business class logic.
+
+commit 8d62a6be4dbd755c6a94b4e9c26b751c3a4baf66
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Wed Oct 30 23:04:36 2024 -0400
+
+    Adding files to commit
+    
+    Added files to commit that were left out from last commit.
+
+commit 1ffa52ab3ad1b6980ea3ec89354520fb0357d7d8
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Wed Oct 30 23:01:25 2024 -0400
+
+    Implimented Task 1C
+    
+    Connected the Comparator classes to the MainWindow GUI. Added an onAction method for the sort comboBox.
+
+commit 75a2201c8e5ac4925b792e64bc77aaa0de6eff38
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Mon Oct 28 17:31:43 2024 -0400
+
+    Implimented Task 1B
+    
+    Added IngredientTypeComparator and IngredientNameComparator classes to sort the ingredients by their type or name.
+
+commit 28ac2c9d398895c79c3f91f36bedaebc9a31004b
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Mon Oct 28 17:00:31 2024 -0400
+
+    Implimented Task 1A
+    
+    Added a comboBox for the sorting using SceneBuilder. Also added a Sort By label.
+
+commit 98ec105ca6f12da300b0b41d3b14694512255fd7
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Mon Oct 28 16:48:19 2024 -0400
+
+    Committing Untracked Files
+    
+    Some files in the Bill project were untracked from the last commit and are being included in this commit.
+
+commit 31a1af8b8db927b0046d43523fe4688538f4beef
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Thu Oct 24 11:06:20 2024 -0400
+
+    Added Project 2 Into Repo
+    
+    Added project 2 start files into the code folder, adding it to the repository.
+
+commit 8692e655ddeac7bd40cd47a1edaf4464c083e9c6
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Oct 15 16:59:39 2024 -0400
+
+    Implimenting Feature 2
+    
+    Added comparator and ascending/descending classes for sorting. Added a new sort method to Bill to sort the items.
+
+commit aa089d965b5d63117d09d038d5fdd3d10af77421
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Oct 15 15:56:08 2024 -0400
+
+    Implimented Remaining Feature 1
+    
+    Corrected save method in MainWindow. Finished remaining implimentation from last commit.
+
+commit 256c1d1fc4bf6d8a38ff031fc501f92f22265fea
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Thu Oct 10 16:10:46 2024 -0400
+
+    Implimenting Parts of Feature 1
+    
+    Implimented CSV and TSV classes as well as comboboxes in FXML. Made these changes outside of feature branch on accident. Rest of feature1 implimentation will be done in new feature branch.
+
+commit d24240095366f1cba1df24af743b60d6fad954fe
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Oct 1 18:05:48 2024 -0400
+
+    Added Test Classes
+    
+    Added test classes for load and save data. Als corrected some checkstyle errors.
+
+commit 3e6b4ccbf9288c36cd652db81ac1e332adaa219e
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Oct 1 17:34:06 2024 -0400
+
+    Implimented Feature 2
+    
+    Implimented load functionality. Added test package and classes in preparation for the next feature branch.
+
+commit ea24dc3c8e945c27c4043e12ade0bb8005517ee7
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Oct 1 16:34:51 2024 -0400
+
+    Fixed Feature 1 Implimentation
+    
+    Changed the way feature 1 was implimented to allow for proper file reading in feature 2. Deleted the class made in the last commit.
+
+commit 8edb6179ed16e8a34652e1fbc4ac05f92a4c4b56
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Tue Oct 1 15:46:43 2024 -0400
+
+    Moving Files
+    
+    Committing moved files, previous commit missed them.
+
+commit 255a01cb35e5cf074cca73626564bc12fa8664f6
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Mon Sep 30 16:16:26 2024 -0400
+
+    Implimented Feature 1
+    
+    Added FileWriter class that writes the given String to a file. Added FXML implimentation to link the class to the textArea information.
+
+commit f9a99838e1c751e2a0ff54de7d47bdee768c7454
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Mon Sep 30 14:40:55 2024 -0400
+
+    Adding Bill Project
+    
+    Added files for Bill project in the code folder. Committing them into the repo.
+
+commit f479d4a5bee93735bdbbf798b0522e56aaf4e6e8
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Mon Sep 30 14:32:02 2024 -0400
+
+    Cleaned up workspace
+    
+    Added code folder, moved Project 1 into its own folder in the code folder.
+
+commit 872551b8013a987f8c490bacef5b840a643f1fc0
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Wed Sep 25 23:39:28 2024 -0400
+
+    Implimented Feature 4
+    
+    Added the countGroceries method, added code in the FXML to add a Count Grocery button. Also added the Github repo link in a text file.
+
+commit ced032aba5f0b40ca9b6cfda790427891b0a6268
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Wed Sep 25 23:21:14 2024 -0400
+
+    Implimented Feature 3
+    
+    Added the removeGrocery method and implimented UI that removes the selected item in the ListView.
+
+commit 3f2aaf48b6873ce99b95b907da2d8a8d1be86d5c
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Wed Sep 25 12:26:40 2024 -0400
+
+    Implimenting Feature 2
+    
+    Added methods for manipulating a grocery's quantity. Added FXML elements to impliment those into the UI. Connected the methods in the classes with the FXML.
+
+commit e1917e26be33a4b909cb46f9b755b6c2cd597d60
+Merge: e155f13 7c62983
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Wed Sep 25 11:49:40 2024 -0400
+
+    Merge branch 'master' of https://github.com/jessicastuckey/UWG_CS1302_LABS
+
+commit e155f13c0b8b905a814ffb35c130b0e223f26b4c
+Author: Jessica G Stuckey <js00547@my.westga.edu>
+Date:   Wed Sep 25 11:34:09 2024 -0400
+
+    Implimented Feature 1
+    
+    Created Pantry and PantryGrocery classes to create an array that holds grocery items. Created FXML for related buttons, labels, and listview for both classes.Connected the FXML and code classes.
+
+commit 7c6298309e92b5bbbec91182bdaf6557c5858c32
+Author: jessicastuckey <165093286+jessicastuckey@users.noreply.github.com>
+Date:   Wed Sep 25 11:23:33 2024 -0400
+
+    Initial commit
